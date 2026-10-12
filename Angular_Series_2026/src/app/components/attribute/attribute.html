@@ -1,0 +1,36 @@
+<div class="row" [ngStyle]="{color:textColor,'text-size':'30px'}">
+    <div class="col-4">
+        <table class="table table-bordered">
+            <thead>
+                <th>S.N.</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Course</th>
+                <th>Is Active</th>
+            </thead>
+            <tbody>
+                @for(student of students ;track $index){
+                <tr>
+                    <td [ngClass]="student.isActive?'bg-success':'bg-danger'">{{$index+1}}</td>
+                    <td [ngClass]="student.isActive?'bg-success':'bg-danger'">{{student.Name}}</td>
+                    <td [ngClass]="student.isActive?'bg-success':'bg-danger'">{{student.Age}}</td>
+                    <td [ngClass]="student.isActive?'bg-success':'bg-danger'">{{student.Course}}</td>
+                    @if(student.isActive){
+                    <td [ngClass]="textClass">Active</td>
+                    }@else {
+                    <td class="bg-danger">Inactive</td>
+                    }
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <hr>
+    <br>
+    <div class="row" [ngStyle]="myCss">
+        <div class="col-3">
+            Hello this is Dynamic Css Example
+        </div>
+    </div>
+</div>

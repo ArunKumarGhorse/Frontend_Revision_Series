@@ -1,0 +1,44 @@
+<h1>Data Binding</h1>
+<p>Course : {{courseName}}</p>
+<p>Price : {{coursePrice}}</p>
+<p>Active : {{isActive}}</p>
+<table style="height:300px;width:500px;border-color: black;border-style: solid; border-radius: 3px solid black;">
+    <tr>
+        <!-- Interpolation -->
+        <td>course name: {{courseName}}</td>
+    </tr>
+    <tr>
+        <!-- Interpolation -->
+        <td><input type="number" [(ngModel)]="coursePrice"></td>
+
+        <!-- Property Binding -->
+        <p>is active:<span [class]="classname">{{isActive}}</span></p>
+    </tr>
+
+    <!-- Event Binding -->
+    <tr>
+        <td>
+            <button (click)="changeCourseName('Python and Machine Learning')">Change Course Name</button>
+        </td>
+        <td>
+            <select (click)="onCityChange()">
+                <option value="">Nagpur</option>
+                <option value="">Mumbai</option>
+                <option value="">Pune</option>
+                <option value="">Delhi</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <!-- Signal variable -->
+        <p>Course Duration: {{courseDuration()}}</p>
+    </tr>
+    <tr>
+        <button (click)="AddCity('Indore')">Add City</button>
+        <p>{{cityList()}}</p>
+        <button (click)="ChangeCity()">Change City</button>
+
+        <p>{{student().name}}---{{student().city}}</p>
+    </tr>
+
+</table>

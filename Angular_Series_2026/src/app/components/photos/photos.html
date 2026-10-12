@@ -1,0 +1,87 @@
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header bg-warning">
+                Photo List
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Sr N.</th>
+                            <th>Title</th>
+                            <th>Url</th>
+                            <th>Thumbnail</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (items of photoList; track items.id){
+                        <tr>
+                            <td>{{$index+1}}</td>
+                            <td>{{items.title}}</td>
+                            <td><a [href]="items.url" target="_blank">{{items.url}}</a></td>
+                            <td>
+                                <img [src]="items.thumbnailUrl" [alt]="items.title" width="40" height="40"
+                                    class="me-2 rounded">
+                                <span class="small text-muted">{{items.thumbnailUrl}}</span>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger btn-sm">Delete</button>
+                                <button class="btn btn-success btn-sm">Edit</button>
+                            </td>
+                        </tr>
+                        } @empty {
+                        <tr>
+                            <td colspan="4" class="text-center text-muted py-3">
+                                Loading photos...
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-4 pt-2">
+        <div class="card">
+            <div class="card-header bg-warning">
+                Add New Photo
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row">
+                        <div class="col-6">
+                            <label>Album Id</label>
+                            <input type="text" name="Album Id" [(ngModel)]="newPhoto.albumId" class="form-control">
+                        </div>
+                        <div class="col-6">
+                            <label>Title</label>
+                            <input type="text" name="Title" [(ngModel)]="newPhoto.title" class="form-control">
+                        </div>
+                        <div class="col-6">
+                            <label>URL</label>
+                            <input type="text" name="URL" [(ngModel)]="newPhoto.url" class="form-control">
+                        </div>
+                        <div class="col-6">
+                            <label>Thumbnail</label>
+                            <input type="text" name="Thumbnail" [(ngModel)]="newPhoto.thumbnailUrl"
+                                class="form-control">
+                        </div>
+                    </div>
+
+
+
+                    <div class="row pt-2">
+                        <div class="col-6 text-center">
+                            <button class="btn btn-danger">reset</button>
+                        </div>
+                        <div class="col-6 text-center">
+                            <button class="btn btn-success" (click)="onSavePhoto()">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
